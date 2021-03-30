@@ -1,0 +1,44 @@
+[alias]
+  st = status -s
+  cl = clone
+  ci = commit
+  cm = commit -m
+  cma = commit -m -a
+  ca = commit --ammend
+  amend = commit --ammend
+  co = checkout
+  br = branch
+  r = reset
+  cp = cherry-pick
+  f = "!git ls-files | grep -i"
+  grep = grep -Ii
+  gr = grep -Ii
+  rs = reset --hard
+  #grep from root folder
+  gra = "!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f"
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
+[color "branch"]
+    current = red reverse
+    local = blue
+    remote = green
+
+[push]
+    default = upstream
+
+[pull]
+    default = current
+
+[branch]
+  autosetuprebase = always
+
+[apply]
+  whitespace = nowarn
+
+# Sets the protocol to https. This is helpful if your IT deparment doesn't allow the git protocol
+[url "https://"]
+  insteadOf = git://
